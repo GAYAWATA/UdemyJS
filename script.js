@@ -1,20 +1,27 @@
-let money = +prompt("Ваш бюджет на месяц?","");
+let money = prompt("Ваш бюджет на месяц?","");
     time = prompt("Введите дату в формате YYYY-MM-DD","");
 
 let appData = {
     budget: money,
     timeData: time,
-    expensens: {},
+    expenses: {},
     optionalExpenses: {},
     income: {},
     savings: false
 };
-let a1 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-	a2 = prompt("Во сколько обойдется?", ''),
-	a3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-	a4 = prompt("Во сколько обойдется?", '');
 
-appData.expensens.a1 = a2;
-appData.expensens.a3 = a4;
+for (let i = 0; i < 2; i++) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+        b = prompt("Во сколько обойдется?", '');
 
-alert(appData.budget / 30);
+    if ((typeof(a))=== 'string' && (typeof(a)) != null && (typeof(b)) != null
+        && a != '' && b != '' && a.length < 50) {
+        console.log("Принято");
+        appData.expenses[a] = b;
+ } else {
+        console.log("Не принято");
+        i--;
+    }
+}
+
+// alert(appData.budget / 30);
